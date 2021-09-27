@@ -10,50 +10,36 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 48,
-      // padding: EdgeInsets.all(16),
-      margin: EdgeInsets.only(left: 16, right: 16),
-      child: Column(
-        children: [
-          ElevatedButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white)),
-              child: Row(
-                children: [
-                  Container(
-                    // child: Image.asset(iconImage),
-                    child: SvgPicture.asset(iconImage),
-                    height: 24,
-                    width: 24,
+    return Column(
+      children: [
+        ElevatedButton(
+            onPressed: () {},
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.white)),
+            child: Row(
+              children: [
+                Container(
+                  //margin: EdgeInsets.fromLTRB(16, 12, 16, 12),
+                  // child: Image.asset(iconImage),
+                  child: SvgPicture.asset(iconImage),
+                  height: 24,
+                  width: 24,
+                ),
+                SizedBox(
+                  width: 19,
+                ),
+                Container(
+                  height: 24,
+                  width: 216,
+                  child: Text(
+                    "$buttonName",
+                    style: TextStyle(color: Colors.black, fontSize: 16),
                   ),
-                  SizedBox(
-                    width: 19,
-                  ),
-                  Container(
-                    height: 24,
-                    width: 216,
-                    child: Text(
-                      "$buttonName",
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 24,
-                  ),
-                  // Icon(
-                  //   Icons.arrow_forward_ios_outlined,
-                  //   color: Colors.black,
-                  // )
-                  SvgPicture.asset("right.svg"),
-                  // SizedBox(
-                  //   width: 24,
-                  // ),
-                ],
-              )),
-        ],
-      ),
+                ),
+                SvgPicture.asset('assets/images/right.svg')
+              ],
+            )),
+      ],
     );
   }
 }

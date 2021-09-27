@@ -186,23 +186,32 @@ class MyAccountPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 16,
-                          ),
-                          CustomCheckBox(sectionName: "Personal Information"),
-                          SizedBox(
-                            height: 16,
-                          ),
-                          CustomCheckBox(sectionName: "Photo Verification"),
-                          SizedBox(
-                            height: 16,
-                          ),
-                          CustomCheckBox(
-                            sectionName: "My Address",
-                          ),
-                          SizedBox(
-                            height: 16,
-                          ),
+                          Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                CustomCheckBox(
+                                    sectionName: "Personal Information"),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                CustomCheckBox(
+                                    sectionName: "Photo Verification"),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                CustomCheckBox(
+                                  sectionName: "My Address",
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
                     ),
