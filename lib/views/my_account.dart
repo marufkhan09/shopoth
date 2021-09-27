@@ -77,7 +77,7 @@ class MyAccountPage extends StatelessWidget {
             SizedBox(height: 12),
             Container(
               height: 14,
-              width: 56,
+              width: 60,
               child: TextButton(
                 style: ButtonStyle(
                     padding: MaterialStateProperty.all(EdgeInsets.all(0))),
@@ -229,9 +229,31 @@ class MyAccountPage extends StatelessWidget {
             SizedBox(
               height: 16,
             ),
-            CustomButton(
-                buttonName: "Account Information",
-                iconImage: 'assets/images/Person@3x.svg')
+            // CustomButton(
+            //     buttonName: "Account Information",
+            //     iconImage: 'assets/images/Person@3x.svg')
+            Container(
+              margin: EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  CustomButton(
+                      buttonName: "Account Information",
+                      iconImage: 'assets/images/Person.svg'),
+                  CustomButton(
+                      buttonName: "Notification",
+                      iconImage: 'assets/images/Notification.svg'),
+                  CustomButton(
+                      buttonName: "My Order",
+                      iconImage: 'assets/images/Frame.svg'),
+                  CustomButton(
+                      buttonName: "Wishlist",
+                      iconImage: 'assets/images/love.svg'),
+                  CustomButton(
+                      buttonName: "Change Password",
+                      iconImage: 'assets/images/Vector.svg'),
+                ],
+              ),
+            )
           ],
         ),
       ),

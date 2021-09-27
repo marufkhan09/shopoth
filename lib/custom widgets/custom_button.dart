@@ -40,12 +40,16 @@ class CustomButton extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 15,
+                    width: 24,
                   ),
-                  Icon(
-                    Icons.arrow_forward_ios_outlined,
-                    color: Colors.black,
-                  )
+                  // Icon(
+                  //   Icons.arrow_forward_ios_outlined,
+                  //   color: Colors.black,
+                  // )
+                  SvgPicture.asset("right.svg"),
+                  // SizedBox(
+                  //   width: 24,
+                  // ),
                 ],
               )),
         ],
