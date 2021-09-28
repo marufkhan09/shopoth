@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/route_manager.dart';
+import 'package:shopoth/views/change_password.dart';
+import 'package:shopoth/views/my_order.dart';
+import 'package:shopoth/views/wishlist.dart';
+import 'account_information.dart';
+import 'notification.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shopoth/custom widgets/custom_checkbox.dart';
@@ -7,6 +13,26 @@ import 'package:shopoth/custom%20widgets/custom_button.dart';
 
 class MyAccountPage extends StatelessWidget {
   const MyAccountPage({Key? key}) : super(key: key);
+
+  void _goToAccountInfoPage() {
+    Get.to(() => AccountInformation());
+  }
+
+  void _goToNotificationPage() {
+    Get.to(() => NotificationPage());
+  }
+
+  void _goToMyOrderPage() {
+    Get.to(() => MyOrder());
+  }
+
+  void _goToWishlistPage() {
+    Get.to(() => Wishlist());
+  }
+
+  void _goToPasswordChangePage() {
+    Get.to(() => ChangePassword());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +46,9 @@ class MyAccountPage extends StatelessWidget {
           shadowColor: Colors.red,
           shape: Border(bottom: BorderSide(color: Colors.red, width: 4)),
           leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              // Get.snackbar("hello", "world");
+            },
             icon: Icon(
               Icons.menu_outlined,
               color: Colors.black,
@@ -189,6 +217,7 @@ class MyAccountPage extends StatelessWidget {
                           Container(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
                                   height: 16,
@@ -246,20 +275,45 @@ class MyAccountPage extends StatelessWidget {
               child: Column(
                 children: [
                   CustomButton(
-                      buttonName: "Account Information",
-                      iconImage: 'assets/images/Person.svg'),
+                    buttonName: "Account Information",
+                    iconImage: 'assets/images/Person.svg',
+                    handler: _goToAccountInfoPage,
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
                   CustomButton(
-                      buttonName: "Notification",
-                      iconImage: 'assets/images/Notification.svg'),
+                    buttonName: "Notification",
+                    iconImage: 'assets/images/Notification.svg',
+                    handler: _goToNotificationPage,
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
                   CustomButton(
-                      buttonName: "My Order",
-                      iconImage: 'assets/images/Frame.svg'),
+                    buttonName: "My Order",
+                    iconImage: 'assets/images/Frame.svg',
+                    handler: _goToMyOrderPage,
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
                   CustomButton(
-                      buttonName: "Wishlist",
-                      iconImage: 'assets/images/love.svg'),
+                    buttonName: "Wishlist",
+                    iconImage: 'assets/images/love.svg',
+                    handler: _goToWishlistPage,
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
                   CustomButton(
-                      buttonName: "Change Password",
-                      iconImage: 'assets/images/Vector.svg'),
+                    buttonName: "Change Password",
+                    iconImage: 'assets/images/Vector.svg',
+                    handler: _goToPasswordChangePage,
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
                 ],
               ),
             )

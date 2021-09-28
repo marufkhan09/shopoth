@@ -32,8 +32,8 @@ class CustomCheckBox extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0)),
               child: _isSelected
                   ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Icon(
                           Icons.check_sharp,
