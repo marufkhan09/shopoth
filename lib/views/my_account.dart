@@ -11,6 +11,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shopoth/custom widgets/custom_checkbox.dart';
 import 'package:shopoth/custom%20widgets/custom_button.dart';
+import 'package:get/get.dart';
 
 class MyAccountPage extends StatelessWidget {
   const MyAccountPage({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class MyAccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final accountController = Get.put(MyAccountController());
+    final accountController = Get.put(MyAccountController());
 
     return Scaffold(
       appBar: PreferredSize(
@@ -298,7 +299,7 @@ class MyAccountPage extends StatelessWidget {
                   ),
                   CustomButton(
                     buttonName: "My Orders",
-                    iconImage: 'assets/images/Frame.svg',
+                    iconImage: 'assets/images/Group.svg',
                     handler: _goToMyOrderPage,
                   ),
                   SizedBox(
@@ -314,7 +315,7 @@ class MyAccountPage extends StatelessWidget {
                   ),
                   CustomButton(
                     buttonName: "Change Password",
-                    iconImage: 'assets/images/Edit.svg',
+                    iconImage: 'assets/images/pencil.svg',
                     handler: _goToPasswordChangePage,
                   ),
                   SizedBox(
