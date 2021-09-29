@@ -260,7 +260,7 @@ class MyAccountPage extends StatelessWidget {
                         ),
                       );
                     },
-                    isExpanded: true,
+                    isExpanded: false,
                   ),
                 ],
                 expansionCallback: (int item, bool status) {

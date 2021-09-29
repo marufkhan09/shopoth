@@ -7,16 +7,23 @@ import 'package:get/instance_manager.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shopoth/controller/account_information_contorller.dart';
 import 'package:shopoth/controller/my_account_controller.dart';
+import 'package:shopoth/custom%20widgets/custom_dropdown_button.dart';
 
 class AccountInformation extends StatelessWidget {
   // const AccountInformation({Key? key}) : super(key: key);
   final accountInfoController = Get.put(MyAccountController());
 
-  bool isVisible = false;
+  bool isProfileVisible = false;
+  bool isMyAddressClicked = false;
+  bool isMyOutletClicked = true;
   bool isVerified = false;
 
   void _goToCart() {
     print("Go to Cart");
+  }
+
+  void _editTextField() {
+    print("Make textfield visible");
   }
 
   @override
@@ -61,35 +68,21 @@ class AccountInformation extends StatelessWidget {
           child: GetX<MyAccountController>(builder: (controller) {
             return Column(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(width: 2.0, color: Colors.grey)),
-                  ),
-                  padding: EdgeInsets.fromLTRB(0, 13, 2, 13),
-                  child: TextButton(
-                      onPressed: () {},
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Text(
-                              "Personal Information",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 186,
-                            ),
-                            SvgPicture.asset("assets/images/pencil.svg"),
-                          ],
-                        ),
-                      )),
-                ),
+                isProfileVisible
+                    ? CustomDropdownButton(
+                        buttonName: "Account Information",
+                        iconImage: "assets/images/save.svg",
+                        handler: _editTextField,
+                        space: 143,
+                      )
+                    : CustomDropdownButton(
+                        buttonName: "Account Information",
+                        iconImage: "assets/images/pencil.svg",
+                        handler: _editTextField,
+                        space: 191,
+                      ),
                 Visibility(
-                  visible: isVisible,
+                  visible: isProfileVisible,
                   replacement: Column(
                     children: [
                       Container(
@@ -329,12 +322,6 @@ class AccountInformation extends StatelessWidget {
                             ],
                           ),
                         ))
-                    // : Container(
-                    //     color: HexColor('#EA2227'),
-                    //     margin: EdgeInsets.only(top: 24),
-                    //     child: Text(
-                    //         'Look like you haven’t completed the NID verification. Lets’ do it now'),
-                    //   )
                     : ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor:
@@ -384,60 +371,32 @@ class AccountInformation extends StatelessWidget {
                             ],
                           ),
                         )),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(width: 2.0, color: Colors.grey)),
-                  ),
-                  padding: EdgeInsets.fromLTRB(0, 13, 2, 13),
-                  child: TextButton(
-                      onPressed: () {},
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Text(
-                              "My Address",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 258,
-                            ),
-                            SvgPicture.asset("assets/images/pencil.svg"),
-                          ],
-                        ),
-                      )),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(width: 2.0, color: Colors.grey)),
-                  ),
-                  padding: EdgeInsets.fromLTRB(0, 13, 2, 13),
-                  child: TextButton(
-                      onPressed: () {},
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Text(
-                              "My Outlets",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 258,
-                            ),
-                            SvgPicture.asset("assets/images/pencil.svg"),
-                          ],
-                        ),
-                      )),
-                ),
+                CustomDropdownButton(
+                    buttonName: "My Address",
+                    iconImage: "assets/images/Up.svg",
+                    handler: _editTextField,
+                    space: 238.6),
+                isMyAddressClicked
+                    ? Container(
+                        height: 50,
+                        color: Colors.black,
+                      )
+                    : Container(
+                        height: 0,
+                      ),
+                CustomDropdownButton(
+                    buttonName: "My Outlets",
+                    iconImage: "assets/images/Up.svg",
+                    handler: _editTextField,
+                    space: 244),
+                isMyOutletClicked
+                    ? Container(
+                        height: 50,
+                        color: Colors.black,
+                      )
+                    : Container(
+                        height: 0,
+                      ),
               ],
             );
           }),
