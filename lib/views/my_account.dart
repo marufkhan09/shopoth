@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
+import 'package:shopoth/controller/my_account_controller.dart';
 import 'package:shopoth/views/change_password.dart';
 import 'package:shopoth/views/my_order.dart';
 import 'package:shopoth/views/wishlist.dart';
@@ -36,6 +37,8 @@ class MyAccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //final accountController = Get.put(MyAccountController());
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(56),
@@ -58,7 +61,8 @@ class MyAccountPage extends StatelessWidget {
           title: Text(
             'My Account',
             style: TextStyle(
-              fontWeight: FontWeight.normal,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
               color: Colors.black,
             ),
           ),
@@ -156,7 +160,9 @@ class MyAccountPage extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(
+                    color: Colors.white,
+                  ),
                   borderRadius: BorderRadius.all(Radius.circular(5))),
               margin: EdgeInsets.only(left: 16, right: 16),
               child: ExpansionPanelList(
@@ -291,7 +297,7 @@ class MyAccountPage extends StatelessWidget {
                     height: 12,
                   ),
                   CustomButton(
-                    buttonName: "My Order",
+                    buttonName: "My Orders",
                     iconImage: 'assets/images/Frame.svg',
                     handler: _goToMyOrderPage,
                   ),
@@ -308,7 +314,7 @@ class MyAccountPage extends StatelessWidget {
                   ),
                   CustomButton(
                     buttonName: "Change Password",
-                    iconImage: 'assets/images/Vector.svg',
+                    iconImage: 'assets/images/Edit.svg',
                     handler: _goToPasswordChangePage,
                   ),
                   SizedBox(
