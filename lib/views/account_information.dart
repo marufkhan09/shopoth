@@ -21,7 +21,7 @@ class AccountInformation extends StatelessWidget {
   bool isMyOutletClicked = true;
   bool isVerified = false;
   bool isSelected = false;
-  bool addressExpanded = false;
+  bool addressExpanded = true;
 
   void _goToCart() {
     print("Go to Cart");
@@ -90,7 +90,7 @@ class AccountInformation extends StatelessWidget {
                         space: 191,
                       ),
                 Visibility(
-                  visible: editButtonTapped,
+                  visible: true,
                   child: Column(
                     children: [
                       Container(
@@ -428,7 +428,7 @@ class AccountInformation extends StatelessWidget {
                                     ),
                                     Container(
                                       child: ListView.builder(
-                                          itemCount: items.length,
+                                          itemCount: menuItems.length,
                                           shrinkWrap: true,
                                           primary: false,
                                           itemBuilder: (context, index) {

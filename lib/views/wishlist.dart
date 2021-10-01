@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:shopoth/models/wislist_model.dart';
 
 class Wishlist extends StatelessWidget {
   const Wishlist({Key? key}) : super(key: key);
@@ -29,18 +32,6 @@ class Wishlist extends StatelessWidget {
             ),
           ),
           actions: [
-            // IconButton(
-            //     onPressed: () {},
-            //     icon: Icon(
-            //       Icons.search,
-            //       color: Colors.black,
-            //     )),
-            // IconButton(
-            //     onPressed: () {},
-            //     icon: Icon(
-            //       Icons.notifications_none_sharp,
-            //       color: Colors.black,
-            //     )),
             IconButton(
                 onPressed: () {},
                 icon: Icon(
@@ -50,8 +41,140 @@ class Wishlist extends StatelessWidget {
           ],
         ),
       ),
-      body: Container(
-        child: Center(child: Text('Wishlist')),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 24,
+              alignment: Alignment.topLeft,
+              margin: EdgeInsets.fromLTRB(16, 24, 34, 16.95),
+              child: Text(
+                'Your Favourite',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 16, right: 16),
+              child: ListView.builder(
+                  itemCount: wishlistItem.length,
+                  shrinkWrap: true,
+                  primary: false,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(top: 16),
+                      decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(width: 1.0, color: Colors.grey)),
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(bottom: 24, right: 5.94),
+                            height: 113,
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5)),
+                                  width: 108.34,
+                                  height: double.infinity,
+                                  child: SvgPicture.asset(
+                                      wishlistItem[index].imageUrl),
+                                ),
+                                Container(
+                                  height: double.infinity,
+                                  width:
+                                      MediaQuery.of(context).size.width - 147,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 15.5),
+                                        padding: EdgeInsets.fromLTRB(
+                                            4.55, 5.5, 4.55, 5.5),
+                                        decoration: BoxDecoration(
+                                            color: HexColor('#DFE7FF'),
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        height: 24,
+                                        //width: 147.1,
+                                        child: Text(
+                                          "Save tk" +
+                                              "${wishlistItem[index].discount}" +
+                                              "| was " +
+                                              "${wishlistItem[index].initialPrice}",
+                                          style: TextStyle(
+                                              color: HexColor('#EF4056'),
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w700),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 39.5,
+                                        width: 203.76,
+                                        margin: EdgeInsets.only(bottom: 10),
+                                        child: Text(
+                                          wishlistItem[index].name,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 16),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 24,
+                                        width: 100,
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              "Tk ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 18),
+                                            ),
+                                            Text(
+                                              "${wishlistItem[index].price}",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 18),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                color: HexColor("#EF4056"),
+                                borderRadius: BorderRadius.circular(100)),
+                            child: TextButton(
+                                onPressed: () {},
+                                child: Center(
+                                  child: Text(
+                                    "ADD TO CART",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                )),
+                          ),
+                          SizedBox(height: 16),
+                        ],
+                      ),
+                    );
+                  }),
+            ),
+          ],
+        ),
       ),
     );
   }
