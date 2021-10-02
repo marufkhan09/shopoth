@@ -28,30 +28,17 @@ class PhotoVerification extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-          actions: [
-            // IconButton(
-            //     onPressed: () {},
-            //     icon: Icon(
-            //       Icons.search,
-            //       color: Colors.black,
-            //     )),
-            // IconButton(
-            //     onPressed: () {},
-            //     icon: Icon(
-            //       Icons.notifications_none_sharp,
-            //       color: Colors.black,
-            //     )),
-            IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Colors.black,
-                )),
-          ],
         ),
       ),
-      body: Container(
-        child: Center(child: Text('PhotoVerification')),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(15, 24.95, 114, 0),
+              child: Text('Register your Photo ID in 2 easy steps'),
+            )
+          ],
+        ),
       ),
     );
   }

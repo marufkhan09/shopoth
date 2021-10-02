@@ -11,6 +11,8 @@ import 'package:shopoth/controller/my_account_controller.dart';
 import 'package:shopoth/custom%20widgets/custom_checkbox.dart';
 import 'package:shopoth/custom%20widgets/custom_dropdown_button.dart';
 import 'package:shopoth/models/popupmenuitem.dart';
+import 'package:shopoth/views/photo_verification.dart';
+import 'package:get/get.dart';
 
 class AccountInformation extends StatelessWidget {
   // const AccountInformation({Key? key}) : super(key: key);
@@ -25,6 +27,10 @@ class AccountInformation extends StatelessWidget {
 
   void _goToCart() {
     print("Go to Cart");
+  }
+
+  void _goToVerificationPage() {
+    Get.to(() => PhotoVerification());
   }
 
   void _editTextField() {
@@ -339,7 +345,9 @@ class AccountInformation extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5.0),
                           )),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          _goToVerificationPage();
+                        },
                         child: Container(
                           child: Row(
                             children: [
