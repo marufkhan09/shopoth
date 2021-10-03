@@ -3,19 +3,47 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final label;
-  final titleController;
-  final Function submitData;
+  bool isEnabled;
+  // final titleController;
+  // final Function submitData;
 
-  CustomTextField(this.label, this.titleController, this.submitData);
+  CustomTextField({required this.label, required this.isEnabled});
+  // required this.titleController,
+  // required this.submitData});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.topLeft,
+      margin: EdgeInsets.only(top: 10),
       child: TextField(
-        decoration: InputDecoration(labelText: label),
-        controller: titleController,
-        onSubmitted: (_) => submitData(),
+        enabled: false,
+        decoration: InputDecoration(
+            //labelText: "Name",
+            hintText: label,
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
+        // controller: titleController,
+        // onSubmitted: (_) => submitData(),
       ),
     );
   }
+}
+// Container(
+//                                       alignment: Alignment.topLeft,
+//                                       margin: EdgeInsets.only(top: 10),
+//                                       child: TextField(
+//                                         enabled: false,
+//                                         decoration: InputDecoration(
+//                                             //labelText: "Name",
+//                                             hintText: "date of birth",
+//                                             border: OutlineInputBorder(
+//                                                 borderRadius:
+//                                                     BorderRadius.circular(5))),
+//                                       ),
+//                                     )
+
+@override
+Widget build(BuildContext context) {
+  // TODO: implement build
+  throw UnimplementedError();
 }

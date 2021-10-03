@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+import 'package:shopoth/views/photo_verificationPartTwo.dart';
 
 class PhotoVerification extends StatelessWidget {
-  const PhotoVerification({Key? key}) : super(key: key);
+  // Future getImage() async {
+  //   final _image = await ImagePicker().pickImage(source: ImageSource.camera);
+
+  //   // setstate((){
+  //   //_image = image;
+  //   // });
+  // }
+  void goToVerPartTwo() {
+    Get.to(() => PhotoVerificationPartTwo());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +48,7 @@ class PhotoVerification extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.fromLTRB(16, 24.95, 114, 0),
+          margin: EdgeInsets.fromLTRB(16, 24.95, 15, 0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,6 +141,132 @@ class PhotoVerification extends StatelessWidget {
                 child: Text('Please upload your NID front side',
                     style:
                         TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+              ),
+              SizedBox(
+                height: 232,
+              ),
+              Container(
+                height: 36,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 156,
+                      decoration: BoxDecoration(
+                          color: HexColor("#EF4056"),
+                          borderRadius: BorderRadius.circular(100)),
+                      child: TextButton(
+                          onPressed: () {},
+                          child: Center(
+                            child: Text(
+                              "Capture",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          )),
+                    ),
+                    Container(
+                      width: 156,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(color: HexColor("#EF4056"))),
+                      child: TextButton(
+                          onPressed: () {},
+                          child: Center(
+                            child: Text(
+                              "Upload",
+                              style: TextStyle(
+                                  color: HexColor("#EF4056"),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Container(
+                child: Text('Please upload your NID front side',
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+              ),
+              SizedBox(
+                height: 232,
+              ),
+              Container(
+                height: 36,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 156,
+                      decoration: BoxDecoration(
+                          color: HexColor("#EF4056"),
+                          borderRadius: BorderRadius.circular(100)),
+                      child: TextButton(
+                          onPressed: () {},
+                          child: Center(
+                            child: Text(
+                              "Capture",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          )),
+                    ),
+                    Container(
+                      width: 156,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(color: HexColor("#EF4056"))),
+                      child: TextButton(
+                          onPressed: () {},
+                          child: Center(
+                            child: Text(
+                              "Upload",
+                              style: TextStyle(
+                                  color: HexColor("#EF4056"),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(100),
+                    border: Border.all(color: HexColor("#EF4056"))),
+                child: TextButton(
+                    onPressed: () {
+                      goToVerPartTwo();
+                    },
+                    child: Center(
+                      child: Text(
+                        "Next",
+                        style: TextStyle(
+                            color: HexColor("#EF4056"),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700),
+                      ),
+                    )),
+              ),
+              SizedBox(
+                height: 26,
               )
             ],
           ),

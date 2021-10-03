@@ -10,6 +10,8 @@ import 'package:shopoth/controller/account_information_contorller.dart';
 import 'package:shopoth/controller/my_account_controller.dart';
 import 'package:shopoth/custom%20widgets/custom_checkbox.dart';
 import 'package:shopoth/custom%20widgets/custom_dropdown_button.dart';
+import 'package:shopoth/custom%20widgets/custom_label.dart';
+import 'package:shopoth/custom%20widgets/custom_textfield.dart';
 import 'package:shopoth/models/popupmenuitem.dart';
 import 'package:shopoth/views/photo_verification.dart';
 import 'package:get/get.dart';
@@ -40,7 +42,6 @@ class AccountInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = List<String>.generate(3, (i) => "Home Address: " + "$i");
-    final dropDownbuttomItem = ["Edit", "Delete"];
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -404,7 +405,7 @@ class AccountInformation extends StatelessWidget {
                           child: Column(
                             children: [
                               Visibility(
-                                visible: false,
+                                visible: true,
                                 child: Column(
                                   children: [
                                     Container(
@@ -517,102 +518,48 @@ class AccountInformation extends StatelessWidget {
                                 ),
                                 replacement: Column(
                                   children: [
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        "Address Name",
-                                        style: TextStyle(
-                                          color: HexColor("#616161"),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
+                                    CustomLabel(
+                                      LabelName: 'Address Name',
+                                      labelColor: '#616161',
                                     ),
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      margin: EdgeInsets.only(top: 10),
-                                      child: TextField(
-                                        enabled: false,
-                                        decoration: InputDecoration(
-                                            //hintText: "Name",
-                                            labelText: "Address",
-                                            border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(5))),
-                                      ),
+                                    CustomTextField(
+                                      label: 'address',
+                                      isEnabled: true,
                                     ),
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      margin: EdgeInsets.only(top: 16),
-                                      child: Text(
-                                        "Email Address",
-                                        style: TextStyle(
-                                          color: HexColor("#616161"),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
+                                    SizedBox(
+                                      height: 10,
                                     ),
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      margin: EdgeInsets.only(top: 10),
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                            hintText: "email address",
-                                            border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(5))),
-                                      ),
+                                    CustomLabel(
+                                      LabelName: 'Email Address',
+                                      labelColor: '#616161',
                                     ),
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      margin: EdgeInsets.only(top: 16),
-                                      child: Text(
-                                        "Phone Number",
-                                        style: TextStyle(
-                                          color: HexColor("#616161"),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
+                                    CustomTextField(
+                                      label: 'email address',
+                                      isEnabled: true,
                                     ),
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      margin: EdgeInsets.only(top: 10),
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                            //labelText: "Name",
-                                            hintText: "phone number",
-                                            border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(5))),
-                                      ),
+                                    SizedBox(
+                                      height: 10,
                                     ),
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      margin: EdgeInsets.only(top: 16),
-                                      child: Text(
-                                        "Date of Birth",
-                                        style: TextStyle(
-                                          color: HexColor("#616161"),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
+                                    SizedBox(
+                                      height: 10,
                                     ),
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      margin: EdgeInsets.only(top: 10),
-                                      child: TextField(
-                                        enabled: false,
-                                        decoration: InputDecoration(
-                                            //labelText: "Name",
-                                            hintText: "date of birth",
-                                            border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(5))),
-                                      ),
+                                    CustomLabel(
+                                      LabelName: 'Phone Number',
+                                      labelColor: '#616161',
                                     ),
+                                    CustomTextField(
+                                      label: 'phone number',
+                                      isEnabled: true,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    CustomLabel(
+                                      LabelName: 'Date of Birth',
+                                      labelColor: '#616161',
+                                    ),
+                                    CustomTextField(
+                                        label: 'date of birth', isEnabled: true)
                                   ],
                                 ),
                               )
