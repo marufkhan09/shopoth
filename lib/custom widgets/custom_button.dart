@@ -22,6 +22,7 @@ class CustomButton extends StatelessWidget {
                 handler();
               },
               style: ButtonStyle(
+                  elevation: MaterialStateProperty.all(0),
                   backgroundColor: MaterialStateProperty.all(Colors.white)),
               child: Row(
                 children: [

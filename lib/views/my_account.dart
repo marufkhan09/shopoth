@@ -41,6 +41,7 @@ class MyAccountPage extends StatelessWidget {
     final accountController = Get.put(MyAccountController());
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(56),
         child: AppBar(
@@ -168,7 +169,7 @@ class MyAccountPage extends StatelessWidget {
               margin: EdgeInsets.only(left: 16, right: 16),
               child: ExpansionPanelList(
                 animationDuration: Duration(milliseconds: 1000),
-                dividerColor: Colors.red,
+                // dividerColor: Colors.red,
                 children: [
                   ExpansionPanel(
                     body: SingleChildScrollView(
@@ -260,7 +261,7 @@ class MyAccountPage extends StatelessWidget {
                         ),
                       );
                     },
-                    isExpanded: true,
+                    isExpanded: false,
                   ),
                 ],
                 expansionCallback: (int item, bool status) {

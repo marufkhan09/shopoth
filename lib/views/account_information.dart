@@ -43,6 +43,7 @@ class AccountInformation extends StatelessWidget {
     final dropDownbuttomItem = ["Edit", "Delete"];
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(56),
         child: AppBar(
@@ -759,7 +760,7 @@ class AccountInformation extends StatelessWidget {
                               ),
                             );
                           },
-                          isExpanded: false),
+                          isExpanded: true),
                     ],
                     expansionCallback: (int item, bool status) {
                       // setState(() {
