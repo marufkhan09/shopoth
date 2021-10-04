@@ -15,7 +15,7 @@ import 'package:shopoth/custom%20widgets/custom_button.dart';
 import 'package:get/get.dart';
 
 class MyAccountPage extends StatelessWidget {
-  bool _expanded = false;
+  bool _expanded = true;
 
   void _goToAccountInfoPage() {
     Get.to(() => AccountInformation());
@@ -260,19 +260,30 @@ class MyAccountPage extends StatelessWidget {
                                 //       0.0231,
                                 // ),
                                 CustomCheckBox(
-                                    sectionName: "Personal Information"),
+                                  sectionName: "Personal Information",
+                                  isCompleted: true,
+                                ),
                                 // SizedBox(
                                 //   height: MediaQuery.of(context).size.height *
                                 //       0.0231,
                                 // ),
-                                CustomCheckBox(
-                                    sectionName: "Photo Verification"),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 20.0),
+                                  child: CustomCheckBox(
+                                    sectionName: "Photo Verification",
+                                    isCompleted: false,
+                                  ),
+                                ),
                                 // SizedBox(
                                 //   height: MediaQuery.of(context).size.height *
                                 //       0.0231,
                                 // ),
-                                CustomCheckBox(
-                                  sectionName: "My Address",
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 60),
+                                  child: CustomCheckBox(
+                                    sectionName: "My Address",
+                                    isCompleted: true,
+                                  ),
                                 ),
                               ],
                             ),

@@ -3,13 +3,12 @@ import 'package:hexcolor/hexcolor.dart';
 
 class CustomCheckBox extends StatelessWidget {
   final String sectionName;
+  final bool isCompleted;
 
-  const CustomCheckBox({required this.sectionName});
+  const CustomCheckBox({required this.sectionName, required this.isCompleted});
 
   @override
   Widget build(BuildContext context) {
-    bool _isSelected = false;
-
     return Container(
       width: MediaQuery.of(context).size.width * 0.536,
       height: MediaQuery.of(context).size.height * 0.0318,
@@ -17,22 +16,22 @@ class CustomCheckBox extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GestureDetector(
-            onTap: () {},
+            // onTap: () {},
             child: AnimatedContainer(
               duration: Duration(microseconds: 500),
               curve: Curves.fastLinearToSlowEaseIn,
               width: 16,
               height: 16,
               decoration: BoxDecoration(
-                  color: _isSelected ? HexColor("#21409A") : Colors.transparent,
-                  border: _isSelected
+                  color: isCompleted ? HexColor("#21409A") : Colors.transparent,
+                  border: isCompleted
                       ? null
                       : Border.all(
                           color: HexColor("21409A"),
-                          width: 2.0,
+                          width: 2,
                         ),
                   borderRadius: BorderRadius.circular(10.0)),
-              child: _isSelected
+              child: isCompleted
                   ? Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,

@@ -7,6 +7,7 @@ class OutletModel {
   int comments;
   String ownerName;
   String phoneNum;
+  String district;
 
   OutletModel({
     required this.name,
@@ -17,36 +18,40 @@ class OutletModel {
     required this.comments,
     required this.ownerName,
     required this.phoneNum,
+    required this.district,
   });
 }
 
 final List<OutletModel> outletDetail = [
   OutletModel(
+      name: 'Zamal Store',
+      storeId: '#ASFJG21',
+      address: 'Amborkhna Bus stand,',
+      numOfRating: 133,
+      rating: 4.5,
+      comments: 100,
+      ownerName: 'Md. Zamal Hossain',
+      phoneNum: '01992494981',
+      district: 'SYHLET'),
+  OutletModel(
     name: 'Zamal Store',
     storeId: '#ASFJG21',
-    address: 'Amborkhna Bus stand,SYHLET',
+    address: 'Amborkhna Bus stand,',
     numOfRating: 133,
     rating: 4.5,
     comments: 100,
     ownerName: 'Md. Zamal Hossain',
     phoneNum: '01992494981',
+    district: 'SYHLET',
   ),
   OutletModel(
       name: 'Zamal Store',
       storeId: '#ASFJG21',
-      address: 'Amborkhna Bus stand,SYHLET',
+      address: 'Amborkhna Bus stand,',
       numOfRating: 133,
       rating: 4.5,
       comments: 100,
       ownerName: 'Md. Zamal Hossain',
-      phoneNum: '01992494981'),
-  OutletModel(
-      name: 'Zamal Store',
-      storeId: '#ASFJG21',
-      address: 'Amborkhna Bus stand,SYHLET',
-      numOfRating: 133,
-      rating: 4.5,
-      comments: 100,
-      ownerName: 'Md. Zamal Hossain',
-      phoneNum: '01992494981'),
+      phoneNum: '01992494981',
+      district: 'SYHLET'),
 ];
