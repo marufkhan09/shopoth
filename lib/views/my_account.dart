@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/route_manager.dart';
 import 'package:shopoth/controller/my_account_controller.dart';
 import 'package:shopoth/views/change_password.dart';
@@ -14,7 +15,7 @@ import 'package:shopoth/custom%20widgets/custom_button.dart';
 import 'package:get/get.dart';
 
 class MyAccountPage extends StatelessWidget {
-  const MyAccountPage({Key? key}) : super(key: key);
+  bool _expanded = false;
 
   void _goToAccountInfoPage() {
     Get.to(() => AccountInformation());
@@ -43,23 +44,20 @@ class MyAccountPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(56),
+        preferredSize:
+            Size.fromHeight(MediaQuery.of(context).size.height * 0.0810),
+        // preferredSize: Size.fromHeight(56),
         child: AppBar(
           backgroundColor: Colors.white,
           // backwardsCompatibility: false,
           systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.red),
-          shadowColor: Colors.red,
-          shape: Border(bottom: BorderSide(color: Colors.red, width: 4)),
+          //shadowColor: Colors.red,
+          shape: Border(bottom: BorderSide(color: Colors.red, width: 3)),
           leading: IconButton(
-            onPressed: () {
-              // Get.snackbar("hello", "world");
-            },
-            icon: Icon(
-              Icons.menu_outlined,
-              color: Colors.black,
-            ),
+            onPressed: () {},
+            icon: SvgPicture.asset('assets/images/burgermenu.svg'),
           ),
-          elevation: 5,
+
           title: Text(
             'My Account',
             style: TextStyle(
@@ -70,48 +68,44 @@ class MyAccountPage extends StatelessWidget {
           ),
           actions: [
             IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search,
-                  color: Colors.black,
-                )),
+              onPressed: () {},
+              icon: SvgPicture.asset('assets/images/search.svg'),
+            ),
             IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.notifications_none_sharp,
-                  color: Colors.black,
-                )),
+              onPressed: () {},
+              icon: SvgPicture.asset('assets/images/Notification.svg'),
+            ),
             IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Colors.black,
-                )),
+              onPressed: () {},
+              icon: SvgPicture.asset('assets/images/cart.svg'),
+            )
           ],
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 24),
-            Center(
-              child: Container(
-                height: 150,
-                width: 150,
-                child: CircleAvatar(
-                  radius: 100,
-                  child: ClipOval(
-                    child: Image(
-                      image: AssetImage('assets/images/1.png'),
-                    ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.0347),
+            Container(
+              alignment: Alignment.center,
+              //height: 150,
+              height: MediaQuery.of(context).size.height * 0.217,
+              width: MediaQuery.of(context).size.width * 0.416,
+              child: CircleAvatar(
+                radius: 100,
+                child: ClipOval(
+                  child: Image(
+                    image: AssetImage('assets/images/1.png'),
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 12),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.0173),
             Container(
-              height: 14,
-              width: 60,
+              // height: 14,
+              height: MediaQuery.of(context).size.height * 0.0202,
+              //width: 60,
+              width: MediaQuery.of(context).size.width * 0.1555,
               child: TextButton(
                 style: ButtonStyle(
                     padding: MaterialStateProperty.all(EdgeInsets.all(0))),
@@ -128,17 +122,21 @@ class MyAccountPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 8,
+              //height: 8,
+              height: MediaQuery.of(context).size.height * 0.0115,
             ),
-            Text(
-              'Cameron Williamson',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
+            Container(
+              width: MediaQuery.of(context).size.width * 0.3888,
+              child: Text(
+                'Cameron Williamson',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
               ),
             ),
             SizedBox(
-              height: 8,
+              height: MediaQuery.of(context).size.height * 0.0115,
             ),
             Text(
               '025462',
@@ -148,7 +146,7 @@ class MyAccountPage extends StatelessWidget {
                   color: Colors.grey),
             ),
             SizedBox(
-              height: 8,
+              height: MediaQuery.of(context).size.height * 0.0115,
             ),
             Text(
               'Member since 2021',
@@ -158,7 +156,7 @@ class MyAccountPage extends StatelessWidget {
                   color: Colors.grey),
             ),
             SizedBox(
-              height: 16,
+              height: MediaQuery.of(context).size.height * 0.023,
             ),
             Container(
               decoration: BoxDecoration(
@@ -168,6 +166,7 @@ class MyAccountPage extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(5))),
               margin: EdgeInsets.only(left: 16, right: 16),
               child: ExpansionPanelList(
+                elevation: _expanded ? 0 : 1,
                 animationDuration: Duration(milliseconds: 1000),
                 // dividerColor: Colors.red,
                 children: [
@@ -177,74 +176,103 @@ class MyAccountPage extends StatelessWidget {
                       //crossAxisAlignment: CrossAxisAlignment.center,
                       child: Column(
                         children: [
-                          Center(
-                            child: CircularPercentIndicator(
-                              radius: 150,
-                              percent: 0.7,
-                              lineWidth: 15,
-                              backgroundColor: HexColor("#DFE7FF"),
-                              progressColor: HexColor("#21409A"),
-                              startAngle: 120,
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.0231,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.white,
+                                ),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5))),
+                            alignment: Alignment.center,
+                            // height: MediaQuery.of(context).size.height * 0.246,
+                            // width: MediaQuery.of(context).size.width * 0.472,
+                            child: Transform.scale(
+                              scale: 1.1,
+                              child: CircularPercentIndicator(
+                                center: Text(
+                                  '70%',
+                                  style: TextStyle(
+                                      color: HexColor('#21409A'),
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                                radius: 150,
+                                percent: 0.7,
+                                lineWidth: 15,
+                                backgroundColor: HexColor("#DFE7FF"),
+                                progressColor: HexColor("#21409A"),
+                                startAngle: 120,
+                              ),
                             ),
                           ),
                           SizedBox(
-                            height: 16,
+                            height: MediaQuery.of(context).size.height * 0.023,
                           ),
-                          Center(
-                            child: Container(
-                              width: 165,
-                              height: 22,
-                              padding: EdgeInsets.zero,
-                              child: ElevatedButton(
-                                style: ButtonStyle(
-                                  shadowColor:
-                                      MaterialStateProperty.all(Colors.white),
-                                  //elevation: ,
-                                  backgroundColor:
-                                      MaterialStateProperty.all(Colors.white),
-                                ),
-                                onPressed: () {},
-                                child: Row(
-                                  children: [
-                                    Text(
+                          Container(
+                            alignment: Alignment.center,
+                            width:
+                                (MediaQuery.of(context).size.width * 0.3527) +
+                                    8,
+                            height:
+                                (MediaQuery.of(context).size.height * 0.0318) +
+                                    7.4,
+                            child: TextButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.2777,
+                                    height: MediaQuery.of(context).size.width *
+                                        0.0611,
+                                    child: Text(
                                       "My Progress",
                                       style: TextStyle(
                                         fontSize: 18,
                                         color: HexColor("#21409A"),
                                       ),
                                     ),
-                                    Icon(
-                                      Icons.expand_less,
-                                      color: HexColor("#21409A"),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                  Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.055,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.055,
+                                    child: SvgPicture.asset(
+                                        'assets/images/upward.svg'),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                           Container(
+                            width: MediaQuery.of(context).size.width * 0.536,
+                            height: MediaQuery.of(context).size.height * 0.153,
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(
-                                  height: 16,
-                                ),
+                                // SizedBox(
+                                //   height: MediaQuery.of(context).size.height *
+                                //       0.0231,
+                                // ),
                                 CustomCheckBox(
                                     sectionName: "Personal Information"),
-                                SizedBox(
-                                  height: 16,
-                                ),
+                                // SizedBox(
+                                //   height: MediaQuery.of(context).size.height *
+                                //       0.0231,
+                                // ),
                                 CustomCheckBox(
                                     sectionName: "Photo Verification"),
-                                SizedBox(
-                                  height: 16,
-                                ),
+                                // SizedBox(
+                                //   height: MediaQuery.of(context).size.height *
+                                //       0.0231,
+                                // ),
                                 CustomCheckBox(
                                   sectionName: "My Address",
-                                ),
-                                SizedBox(
-                                  height: 16,
                                 ),
                               ],
                             ),
@@ -253,7 +281,8 @@ class MyAccountPage extends StatelessWidget {
                       ),
                     ),
                     headerBuilder: (BuildContext context, bool isExpanded) {
-                      return Center(
+                      return Container(
+                        alignment: Alignment.center,
                         child: Text(
                           "Your Profile Completed - 70%",
                           style: TextStyle(
@@ -261,7 +290,7 @@ class MyAccountPage extends StatelessWidget {
                         ),
                       );
                     },
-                    isExpanded: false,
+                    isExpanded: _expanded,
                   ),
                 ],
                 expansionCallback: (int item, bool status) {
@@ -273,11 +302,8 @@ class MyAccountPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 16,
+              height: MediaQuery.of(context).size.height * 0.0231,
             ),
-            // CustomButton(
-            //     buttonName: "Account Information",
-            //     iconImage: 'assets/images/Person@3x.svg')
             Container(
               margin: EdgeInsets.all(16),
               child: Column(
@@ -288,7 +314,7 @@ class MyAccountPage extends StatelessWidget {
                     handler: _goToAccountInfoPage,
                   ),
                   SizedBox(
-                    height: 12,
+                    height: MediaQuery.of(context).size.height * 0.0173,
                   ),
                   CustomButton(
                     buttonName: "Notification",
@@ -296,7 +322,7 @@ class MyAccountPage extends StatelessWidget {
                     handler: _goToNotificationPage,
                   ),
                   SizedBox(
-                    height: 12,
+                    height: MediaQuery.of(context).size.height * 0.0173,
                   ),
                   CustomButton(
                     buttonName: "My Orders",
@@ -304,7 +330,7 @@ class MyAccountPage extends StatelessWidget {
                     handler: _goToMyOrderPage,
                   ),
                   SizedBox(
-                    height: 12,
+                    height: MediaQuery.of(context).size.height * 0.0173,
                   ),
                   CustomButton(
                     buttonName: "Wishlist",
@@ -312,7 +338,7 @@ class MyAccountPage extends StatelessWidget {
                     handler: _goToWishlistPage,
                   ),
                   SizedBox(
-                    height: 12,
+                    height: MediaQuery.of(context).size.height * 0.0173,
                   ),
                   CustomButton(
                     buttonName: "Change Password",
@@ -320,7 +346,7 @@ class MyAccountPage extends StatelessWidget {
                     handler: _goToPasswordChangePage,
                   ),
                   SizedBox(
-                    height: 12,
+                    height: MediaQuery.of(context).size.height * 0.0173,
                   ),
                 ],
               ),

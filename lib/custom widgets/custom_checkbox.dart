@@ -11,6 +11,8 @@ class CustomCheckBox extends StatelessWidget {
     bool _isSelected = false;
 
     return Container(
+      width: MediaQuery.of(context).size.width * 0.536,
+      height: MediaQuery.of(context).size.height * 0.0318,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -12,9 +12,11 @@ import 'package:shopoth/custom%20widgets/custom_checkbox.dart';
 import 'package:shopoth/custom%20widgets/custom_dropdown_button.dart';
 import 'package:shopoth/custom%20widgets/custom_label.dart';
 import 'package:shopoth/custom%20widgets/custom_textfield.dart';
+import 'package:shopoth/models/outlet_model.dart';
 import 'package:shopoth/models/popupmenuitem.dart';
 import 'package:shopoth/views/photo_verification.dart';
 import 'package:get/get.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class AccountInformation extends StatelessWidget {
   // const AccountInformation({Key? key}) : super(key: key);
@@ -26,6 +28,7 @@ class AccountInformation extends StatelessWidget {
   bool isVerified = false;
   bool isSelected = false;
   bool addressExpanded = true;
+  bool outletExpanded = true;
 
   void _goToCart() {
     print("Go to Cart");
@@ -46,7 +49,8 @@ class AccountInformation extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(56),
+        preferredSize:
+            Size.fromHeight(MediaQuery.of(context).size.height * 0.0810),
         child: AppBar(
           iconTheme: IconThemeData(
             color: Colors.black,
@@ -55,9 +59,7 @@ class AccountInformation extends StatelessWidget {
           // backwardsCompatibility: false,
           systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.red),
           shadowColor: Colors.red,
-          shape: Border(bottom: BorderSide(color: Colors.red, width: 4)),
-
-          elevation: 5,
+          shape: Border(bottom: BorderSide(color: Colors.red, width: 3)),
           title: Text(
             'Account Information',
             style: TextStyle(
@@ -68,18 +70,15 @@ class AccountInformation extends StatelessWidget {
           ),
           actions: [
             IconButton(
-                onPressed: () {
-                  _goToCart();
-                },
-                icon: Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Colors.black,
-                )),
+              onPressed: () {},
+              icon: SvgPicture.asset('assets/images/cart.svg'),
+            ),
           ],
         ),
       ),
       body: SingleChildScrollView(
         child: Container(
+          // width: MediaQuery.of(context).size.width * 0.9111,
           margin: EdgeInsets.fromLTRB(16, 24.57, 16, 10),
           child: GetX<MyAccountController>(builder: (controller) {
             return Column(
@@ -614,83 +613,265 @@ class AccountInformation extends StatelessWidget {
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
-                                  Center(
-                                    child: CircularPercentIndicator(
-                                      radius: 150,
-                                      percent: 0.7,
-                                      lineWidth: 15,
-                                      backgroundColor: HexColor("#DFE7FF"),
-                                      progressColor: HexColor("#21409A"),
-                                      startAngle: 120,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 16,
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      width: 165,
-                                      height: 22,
-                                      padding: EdgeInsets.zero,
-                                      child: ElevatedButton(
-                                        style: ButtonStyle(
-                                          shadowColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.white),
-                                          //elevation: ,
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.white),
-                                        ),
-                                        onPressed: () {},
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              "My Progress",
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                color: HexColor("#21409A"),
-                                              ),
-                                            ),
-                                            Icon(
-                                              Icons.expand_less,
-                                              color: HexColor("#21409A"),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
                                   Container(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                    margin: EdgeInsets.only(
+                                        top: 0, left: 20, right: 16.04),
+                                    child: Row(
                                       children: [
-                                        SizedBox(
-                                          height: 16,
-                                        ),
-                                        CustomCheckBox(
-                                            sectionName:
-                                                "Personal Information"),
-                                        SizedBox(
-                                          height: 16,
-                                        ),
-                                        CustomCheckBox(
-                                            sectionName: "Photo Verification"),
-                                        SizedBox(
-                                          height: 16,
-                                        ),
-                                        CustomCheckBox(
-                                          sectionName: "My Address",
+                                        Text(
+                                          "100% Completed",
+                                          style: TextStyle(
+                                              color: HexColor("#21409A")),
                                         ),
                                         SizedBox(
-                                          height: 16,
+                                          width: 158,
+                                        ),
+                                        TextButton(
+                                          onPressed: () {},
+                                          child: Text(
+                                            "Choose List",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: HexColor("#EF4056"),
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
-                                  )
+                                  ),
+                                  SizedBox(
+                                    height: 24,
+                                  ),
+                                  Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 16),
+                                    child: ListView.builder(
+                                      itemCount: outletDetail.length,
+                                      shrinkWrap: true,
+                                      primary: false,
+                                      itemBuilder: (context, index) {
+                                        return Container(
+                                          margin: EdgeInsets.symmetric(
+                                              vertical: 16),
+                                          decoration: BoxDecoration(
+                                            border: Border(
+                                                bottom: BorderSide(
+                                                    width: 1.0,
+                                                    color: Colors.grey)),
+                                          ),
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.232,
+                                          width: double.infinity,
+                                          //color: Colors.blue[100],
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    .51,
+                                                color: Colors.amber,
+                                                child: Column(
+                                                  children: [
+                                                    Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.515,
+                                                      // color: Colors.red,
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            "1. " +
+                                                                outletDetail[
+                                                                        index]
+                                                                    .name,
+                                                            style: TextStyle(
+                                                                fontSize: 14,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 1,
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left:
+                                                                        25.25),
+                                                            child: Text(
+                                                              'Store' +
+                                                                  outletDetail[
+                                                                          index]
+                                                                      .storeId,
+                                                              style: TextStyle(
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 4,
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left:
+                                                                        25.25),
+                                                            child: Text(
+                                                              outletDetail[
+                                                                      index]
+                                                                  .address,
+                                                              style: TextStyle(
+                                                                  color: HexColor(
+                                                                      '#616161'),
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 43,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              SvgPicture.asset(
+                                                                  'assets/images/Person.svg'),
+                                                              SizedBox(
+                                                                width: 10,
+                                                              ),
+                                                              Text(
+                                                                  outletDetail[
+                                                                          index]
+                                                                      .ownerName,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          14,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400)),
+                                                            ],
+                                                          ),
+                                                          SizedBox(
+                                                            height: 8,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              SvgPicture.asset(
+                                                                'assets/images/phone.svg',
+                                                                width: 24,
+                                                                height: 24,
+                                                              ),
+                                                              SizedBox(
+                                                                width: 10,
+                                                              ),
+                                                              Text(
+                                                                  outletDetail[
+                                                                          index]
+                                                                      .ownerName,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          14,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400))
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                color: Colors.red,
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          color: Colors.blue,
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.0260,
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.24,
+
+                                                          //0.2944,
+                                                          child:
+                                                              RatingBar.builder(
+                                                            minRating: 1,
+                                                            itemSize: 20,
+                                                            itemBuilder:
+                                                                (context, _) =>
+                                                                    Icon(
+                                                              Icons
+                                                                  .star_border_rounded,
+                                                              color:
+                                                                  Colors.amber,
+                                                            ),
+                                                            allowHalfRating:
+                                                                true,
+                                                            onRatingUpdate:
+                                                                (rating) {
+                                                              //setstate
+                                                            },
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.013,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  top: 4.0),
+                                                          child: Text(
+                                                              //change this according to given rating
+                                                              '(${outletDetail[index].rating})'),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    Text(
+                                                        '${outletDetail[index].numOfRating}' +
+                                                            'Ratings'),
+                                                    Text(
+                                                        '${outletDetail[index].comments}' +
+                                                            'Comments'),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -707,7 +888,7 @@ class AccountInformation extends StatelessWidget {
                               ),
                             );
                           },
-                          isExpanded: true),
+                          isExpanded: outletExpanded),
                     ],
                     expansionCallback: (int item, bool status) {
                       // setState(() {
@@ -725,3 +906,117 @@ class AccountInformation extends StatelessWidget {
     );
   }
 }
+
+// Column(
+//                                             children: [
+//                                               Row(
+//                                                 mainAxisAlignment:
+//                                                     MainAxisAlignment.start,
+//                                                 crossAxisAlignment:
+//                                                     CrossAxisAlignment.start,
+//                                                 children: [
+//                                                   Container(
+//                                                     width:
+//                                                         MediaQuery.of(context)
+//                                                                 .size
+//                                                                 .width *
+//                                                             0.515,
+//                                                     color: Colors.red,
+//                                                     padding:
+//                                                         const EdgeInsets.only(
+//                                                             top: 4.0),
+//                                                     child: Column(
+//                                                       children: [
+//                                                         Text("1. " +
+//                                                             outletDetail[index]
+//                                                                 .name),
+//                                                         SizedBox(
+//                                                           height: 1,
+//                                                         ),
+//                                                         Text('Store' +
+//                                                             outletDetail[index]
+//                                                                 .storeId),
+//                                                         Text(outletDetail[index]
+//                                                             .address),
+//                                                         Row(
+//                                                           children: [
+//                                                             SvgPicture.asset(
+//                                                                 'assets/images/Person.svg'),
+//                                                             Text(outletDetail[
+//                                                                     index]
+//                                                                 .ownerName),
+//                                                           ],
+//                                                         ),
+//                                                         Row(
+//                                                           children: [
+//                                                             SvgPicture.asset(
+//                                                                 'assets/images/Person.svg'),
+//                                                             Text(outletDetail[
+//                                                                     index]
+//                                                                 .ownerName),
+//                                                           ],
+//                                                         ),
+//                                                       ],
+//                                                     ),
+//                                                   ),
+//                                                   SizedBox(
+//                                                     width:
+//                                                         MediaQuery.of(context)
+//                                                                 .size
+//                                                                 .width *
+//                                                             0.233,
+//                                                   ),
+//                                                   Row(
+//                                                     children: [
+//                                                       Container(
+//                                                         height: MediaQuery.of(
+//                                                                     context)
+//                                                                 .size
+//                                                                 .height *
+//                                                             0.0260,
+//                                                         width: MediaQuery.of(
+//                                                                     context)
+//                                                                 .size
+//                                                                 .width *
+//                                                             0.2944,
+//                                                         child:
+//                                                             RatingBar.builder(
+//                                                           minRating: 1,
+//                                                           itemSize: 25,
+//                                                           itemBuilder:
+//                                                               (context, _) =>
+//                                                                   Icon(
+//                                                             Icons
+//                                                                 .star_border_rounded,
+//                                                             color: Colors.amber,
+//                                                           ),
+//                                                           allowHalfRating: true,
+//                                                           onRatingUpdate:
+//                                                               (rating) {
+//                                                             //setstate
+//                                                           },
+//                                                         ),
+//                                                       ),
+//                                                       SizedBox(
+//                                                         width: MediaQuery.of(
+//                                                                     context)
+//                                                                 .size
+//                                                                 .width *
+//                                                             0.013,
+//                                                       ),
+//                                                       Padding(
+//                                                         padding:
+//                                                             const EdgeInsets
+//                                                                 .only(top: 4.0),
+//                                                         child: Text(
+//                                                             //change this according to given rating
+//                                                             '(${outletDetail[index].rating})'),
+//                                                       )
+//                                                     ],
+//                                                   ),
+//                                                 ],
+//                                               ),
+//                                               Row(),
+//                                             ],
+//                                           ),
+//                                         );

@@ -194,42 +194,85 @@ class PhotoVerificationPartTwo extends StatelessWidget {
                 ),
                 Text(
                   'Provide some more Information about you',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
                 ),
                 SizedBox(
                   height: 16,
                 ),
                 Text(
                   'Gender',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
-                DropdownButton(
-                  items: gender.map((String dropDownStringItem) {
-                    return DropdownMenuItem(
-                      value: dropDownStringItem,
-                      child: Text(dropDownStringItem),
-                    );
-                  }).toList(),
-                  // onChanged: (String newValueSelected) {
+                SizedBox(
+                  height: 10.13,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey, width: 0.3),
+                    borderRadius: BorderRadius.all(Radius.circular(5.0) //
+                        ),
+                  ),
+                  padding: EdgeInsets.fromLTRB(24, 16.5, 29, 16.5),
+                  height: 50,
+                  child: DropdownButton(
+                    dropdownColor: Colors.white,
+                    icon: SvgPicture.asset('assets/images/Up.svg'),
+                    iconSize: 20,
+                    isExpanded: true,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700),
+                    hint: Text('Gender'),
+                    items: gender.map((String dropDownStringItem) {
+                      return DropdownMenuItem(
+                        value: dropDownStringItem,
+                        child: Text(dropDownStringItem),
+                      );
+                    }).toList(),
+                    // onChanged: (String newValueSelected) {
 
-                  //  },
-                  value: gender[0],
+                    //  },
+                    //value: professionItem[0],
+                  ),
+                ),
+                SizedBox(
+                  height: 16,
                 ),
                 Text(
                   'Profession',
                   style: TextStyle(fontSize: 16),
                 ),
-                DropdownButton(
-                  items: professionItem.map((String dropDownStringItem) {
-                    return DropdownMenuItem(
-                      value: dropDownStringItem,
-                      child: Text(dropDownStringItem),
-                    );
-                  }).toList(),
-                  // onChanged: (String newValueSelected) {
+                SizedBox(height: 10.13),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey, width: 0.3),
+                    borderRadius: BorderRadius.all(Radius.circular(5.0) //
+                        ),
+                  ),
+                  padding: EdgeInsets.fromLTRB(24, 16.5, 29, 16.5),
+                  height: 50,
+                  child: DropdownButton(
+                    dropdownColor: Colors.white,
+                    icon: SvgPicture.asset('assets/images/Up.svg'),
+                    iconSize: 20,
+                    isExpanded: true,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700),
+                    hint: Text('Business'),
+                    items: professionItem.map((String dropDownStringItem) {
+                      return DropdownMenuItem(
+                        value: dropDownStringItem,
+                        child: Text(dropDownStringItem),
+                      );
+                    }).toList(),
+                    // onChanged: (String newValueSelected) {
 
-                  //  },
-                  value: professionItem[0],
+                    //  },
+                    //value: professionItem[0],
+                  ),
                 ),
                 SizedBox(
                   height: 32,
@@ -240,7 +283,42 @@ class PhotoVerificationPartTwo extends StatelessWidget {
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                 ),
                 SizedBox(
-                  height: 232,
+                  height: 20,
+                ),
+                SizedBox(
+                  //this is where camera will preview.
+                  height: 190,
+                ),
+                Container(
+                  height: 100,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Prepare to take a picture',
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w700),
+                      ),
+                      Text(
+                        '1. Ensure proper lighting when taking the picture',
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        '2. Your face needs to be within the frame',
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      SizedBox(
+                        height: 24,
+                      )
+                    ],
+                  ),
                 ),
                 Container(
                   height: 36,
@@ -296,7 +374,82 @@ class PhotoVerificationPartTwo extends StatelessWidget {
                       border: Border.all(color: HexColor("#EF4056"))),
                   child: TextButton(
                       onPressed: () {
-                        // goToVerPartTwo();
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Container(
+                                  height: 230,
+                                  width: 328,
+                                  child: Column(
+                                    // mainAxisAlignment:
+                                    //     MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      SizedBox(
+                                        height: 25,
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 100,
+                                        width: 100,
+                                        child: SvgPicture.asset(
+                                            'assets/images/Congrats.svg'),
+                                      ),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Center(
+                                          child: Text(
+                                        'Congratulations!',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w700),
+                                      )),
+                                      SizedBox(
+                                        height: 16,
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: 16),
+                                        child: Text(
+                                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hac duis a, consectetur.',
+                                          style: TextStyle(
+                                              color: HexColor('#616161'),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                actions: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(16, 0, 16, 34),
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: HexColor('#EF4056'),
+                                      borderRadius: BorderRadius.circular(100),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        TextButton(
+                                            onPressed: () {},
+                                            child: Center(
+                                              child: Text(
+                                                "Okay",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              );
+                            });
                       },
                       child: Center(
                         child: Text(

@@ -20,12 +20,13 @@ class Wishlist extends StatelessWidget {
           backgroundColor: Colors.white,
           // backwardsCompatibility: false,
           systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.red),
-          shadowColor: Colors.red,
-          shape: Border(bottom: BorderSide(color: Colors.red, width: 4)),
+          //shadowColor: Colors.red,
+          shape: Border(bottom: BorderSide(color: Colors.red, width: 3)),
 
           elevation: 5,
           title: Text(
             'Wishlist',
+            textAlign: TextAlign.start,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w700,
@@ -34,11 +35,9 @@ class Wishlist extends StatelessWidget {
           ),
           actions: [
             IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Colors.black,
-                )),
+              onPressed: () {},
+              icon: SvgPicture.asset('assets/images/cart.svg'),
+            )
           ],
         ),
       ),
@@ -78,18 +77,33 @@ class Wishlist extends StatelessWidget {
                             height: 113,
                             child: Row(
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5)),
-                                  width: 108.34,
-                                  height: double.infinity,
-                                  child: SvgPicture.asset(
-                                      wishlistItem[index].imageUrl),
+                                Stack(
+                                  alignment: Alignment.topRight,
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
+                                      width: MediaQuery.of(context).size.width *
+                                          0.3,
+                                      height: double.infinity,
+                                      child: SvgPicture.asset(
+                                          wishlistItem[index].imageUrl),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.topRight,
+                                      child: SvgPicture.asset(
+                                          wishlistItem[index].imageUrl),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 19,
                                 ),
                                 Container(
                                   height: double.infinity,
                                   width:
-                                      MediaQuery.of(context).size.width - 147,
+                                      MediaQuery.of(context).size.width * 0.566,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -108,7 +122,7 @@ class Wishlist extends StatelessWidget {
                                         child: Text(
                                           "Save tk" +
                                               "${wishlistItem[index].discount}" +
-                                              "| was " +
+                                              "| was tk" +
                                               "${wishlistItem[index].initialPrice}",
                                           style: TextStyle(
                                               color: HexColor('#EF4056'),
@@ -118,7 +132,9 @@ class Wishlist extends StatelessWidget {
                                       ),
                                       Container(
                                         height: 39.5,
-                                        width: 203.76,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.566,
                                         margin: EdgeInsets.only(bottom: 10),
                                         child: Text(
                                           wishlistItem[index].name,
@@ -129,7 +145,9 @@ class Wishlist extends StatelessWidget {
                                       ),
                                       Container(
                                         height: 24,
-                                        width: 100,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.22,
                                         child: Row(
                                           children: [
                                             Text(
@@ -154,6 +172,7 @@ class Wishlist extends StatelessWidget {
                             ),
                           ),
                           Container(
+                            width: MediaQuery.of(context).size.width * 0.91,
                             decoration: BoxDecoration(
                                 color: HexColor("#EF4056"),
                                 borderRadius: BorderRadius.circular(100)),

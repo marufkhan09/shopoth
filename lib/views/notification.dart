@@ -21,8 +21,8 @@ class NotificationPage extends StatelessWidget {
           backgroundColor: Colors.white,
           // backwardsCompatibility: false,
           systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.red),
-          shadowColor: Colors.red,
-          shape: Border(bottom: BorderSide(color: Colors.red, width: 4)),
+          //shadowColor: Colors.red,
+          shape: Border(bottom: BorderSide(color: Colors.red, width: 3)),
 
           elevation: 5,
           title: Text(
@@ -113,6 +113,7 @@ class NotificationPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
+                            padding: EdgeInsets.all(4),
                             decoration: BoxDecoration(
                               // border color
                               color:
@@ -161,7 +162,10 @@ class NotificationPage extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Container(
-                                        width: 159,
+                                        // width: 159,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.441,
                                         decoration: BoxDecoration(
                                             color: HexColor("#EF4056"),
                                             borderRadius:
@@ -170,7 +174,7 @@ class NotificationPage extends StatelessWidget {
                                             onPressed: () {},
                                             child: Center(
                                               child: Text(
-                                                "ORDERED DETAILS",
+                                                "ORDER DETAILS",
                                                 style: TextStyle(
                                                   color: Colors.white,
                                                 ),
@@ -181,7 +185,9 @@ class NotificationPage extends StatelessWidget {
                                         width: 16.13,
                                       ),
                                       Container(
-                                        width: 123,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.341,
                                         decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:
