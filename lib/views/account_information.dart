@@ -5,7 +5,6 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shopoth/controller/account_information_contorller.dart';
-import 'package:shopoth/controller/my_account_controller.dart';
 import 'package:shopoth/custom%20widgets/custom_dropdown_button.dart';
 import 'package:shopoth/custom%20widgets/custom_label.dart';
 import 'package:shopoth/custom%20widgets/custom_textfield.dart';
@@ -16,16 +15,15 @@ import 'package:get/get.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class AccountInformation extends StatelessWidget {
-  final accountInfoController = Get.put(MyAccountController());
+  AccountInformationController accountInfoController =
+      Get.put(AccountInformationController());
 
   // account information edit
-  bool editButtonTapped = true;
+  //bool editButtonTapped = true;
   // my address expansion menu clicked
-  bool isMyAddressClicked = false;
+
   bool isMyOutletClicked = true;
   bool isVerified = false;
-
-  bool outletExpanded = true;
 
   void _goToCart() {
     print("Go to Cart");
@@ -75,231 +73,244 @@ class AccountInformation extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          // width: MediaQuery.of(context).size.width * 0.9111,
           margin: EdgeInsets.fromLTRB(16, 24.57, 16, 10),
-          child: GetX<MyAccountController>(builder: (controller) {
-            return Column(
-              children: [
-                editButtonTapped
-                    ? CustomDropdownButton(
-                        buttonName: "Account Information",
-                        iconImage: "assets/images/save.svg",
-                        handler: _editTextField,
-                        space: MediaQuery.of(context).size.width * .33,
-                      )
-                    : CustomDropdownButton(
-                        buttonName: "Account Information",
-                        iconImage: "assets/images/pencil.svg",
-                        handler: _editTextField,
-                        space: 191,
-                      ),
-                Visibility(
-                  visible: editButtonTapped,
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Full Name",
-                          style: TextStyle(
-                            color: HexColor("#616161"),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
+          child: Column(
+            children: [
+              Obx(
+                () => Column(
+                  children: [
+                    Container(
+                      child: accountInfoController.accountInfoTapped.value
+                          ? CustomDropdownButton(
+                              buttonName: "Account Information",
+                              iconImage: "assets/images/save.svg",
+                              handler: accountInfoController.editStatus,
+                              space: MediaQuery.of(context).size.width * .33,
+                            )
+                          : CustomDropdownButton(
+                              buttonName: "Account Information",
+                              iconImage: "assets/images/pencil.svg",
+                              handler: accountInfoController.editStatus,
+                              space: 191,
+                            ),
+                    ),
+                    Container(
+                      child: Visibility(
+                        visible: accountInfoController.accountInfoTapped.value,
+                        child: Column(
+                          children: [
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Full Name",
+                                style: TextStyle(
+                                  color: HexColor("#616161"),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 10),
+                              child: TextField(
+                                enabled: false,
+                                decoration: InputDecoration(
+                                    hintText: "Name",
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5))),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Email Address",
+                                style: TextStyle(
+                                  color: HexColor("#616161"),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 10),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    hintText: "email address",
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5))),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Phone Number",
+                                style: TextStyle(
+                                  color: HexColor("#616161"),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 10),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    //labelText: "Name",
+                                    hintText: "phone number",
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5))),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Date of Birth",
+                                style: TextStyle(
+                                  color: HexColor("#616161"),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 10),
+                              child: TextField(
+                                enabled: false,
+                                decoration: InputDecoration(
+                                    //labelText: "Name",
+                                    hintText: "date of birth",
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5))),
+                              ),
+                            ),
+                          ],
+                        ),
+                        replacement: Column(
+                          children: [
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Full Name",
+                                style: TextStyle(
+                                  color: HexColor("#616161"),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "${accountInfoController.profile[0].name}",
+                                style: TextStyle(),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Email Address",
+                                style: TextStyle(
+                                  color: HexColor("#616161"),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Full Name",
+                                style: TextStyle(),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Phone Number",
+                                style: TextStyle(
+                                  color: HexColor("#616161"),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Full Name",
+                                style: TextStyle(),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Gender",
+                                style: TextStyle(
+                                  color: HexColor("#616161"),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Full Name",
+                                style: TextStyle(),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Date of Birth",
+                                style: TextStyle(
+                                  color: HexColor("#616161"),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(top: 16),
+                              child: Text(
+                                "Full Name",
+                                style: TextStyle(),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 10),
-                        child: TextField(
-                          enabled: false,
-                          decoration: InputDecoration(
-                              hintText: "Name",
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5))),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Email Address",
-                          style: TextStyle(
-                            color: HexColor("#616161"),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 10),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              hintText: "email address",
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5))),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Phone Number",
-                          style: TextStyle(
-                            color: HexColor("#616161"),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 10),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              //labelText: "Name",
-                              hintText: "phone number",
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5))),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Date of Birth",
-                          style: TextStyle(
-                            color: HexColor("#616161"),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 10),
-                        child: TextField(
-                          enabled: false,
-                          decoration: InputDecoration(
-                              //labelText: "Name",
-                              hintText: "date of birth",
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5))),
-                        ),
-                      ),
-                    ],
-                  ),
-                  replacement: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Full Name",
-                          style: TextStyle(
-                            color: HexColor("#616161"),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "${controller.profile[0].name}",
-                          style: TextStyle(),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Email Address",
-                          style: TextStyle(
-                            color: HexColor("#616161"),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Full Name",
-                          style: TextStyle(),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Phone Number",
-                          style: TextStyle(
-                            color: HexColor("#616161"),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Full Name",
-                          style: TextStyle(),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Gender",
-                          style: TextStyle(
-                            color: HexColor("#616161"),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Full Name",
-                          style: TextStyle(),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Date of Birth",
-                          style: TextStyle(
-                            color: HexColor("#616161"),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        margin: EdgeInsets.only(top: 16),
-                        child: Text(
-                          "Full Name",
-                          style: TextStyle(),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  height: 24,
-                ),
-                isVerified
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Container(
+                child: isVerified
                     ? ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor:
@@ -385,7 +396,9 @@ class AccountInformation extends StatelessWidget {
                             ],
                           ),
                         )),
-                Container(
+              ),
+              Obx(
+                () => Container(
                   decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.white,
@@ -578,18 +591,18 @@ class AccountInformation extends StatelessWidget {
                             ),
                           );
                         },
-                        isExpanded: isMyAddressClicked,
+                        isExpanded:
+                            accountInfoController.isMyAddressClicked.value,
                       ),
                     ],
                     expansionCallback: (int item, bool status) {
-                      // setState(() {
-                      //   // itemData[index].expanded =
-                      //   // !itemData[index].expanded;
-                      // });
+                      accountInfoController.addressBarStatus();
                     },
                   ),
                 ),
-                Container(
+              ),
+              Obx(
+                () => Container(
                   decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.white,
@@ -938,19 +951,17 @@ class AccountInformation extends StatelessWidget {
                               ),
                             );
                           },
-                          isExpanded: outletExpanded),
+                          isExpanded:
+                              accountInfoController.isMyOutletClicked.value),
                     ],
                     expansionCallback: (int item, bool status) {
-                      // setState(() {
-                      //   // itemData[index].expanded =
-                      //   // !itemData[index].expanded;
-                      // });
+                      accountInfoController.outletBarStatus();
                     },
                   ),
                 ),
-              ],
-            );
-          }),
+              )
+            ],
+          ),
         ),
       ),
     );

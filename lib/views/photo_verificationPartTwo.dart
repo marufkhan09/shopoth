@@ -22,8 +22,8 @@ class PhotoVerificationPartTwo extends StatelessWidget {
           backgroundColor: Colors.white,
           // backwardsCompatibility: false,
           systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.red),
-          shadowColor: Colors.red,
-          shape: Border(bottom: BorderSide(color: Colors.red, width: 4)),
+
+          shape: Border(bottom: BorderSide(color: Colors.red, width: 3)),
 
           elevation: 5,
           title: Text(

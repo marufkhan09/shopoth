@@ -21,7 +21,9 @@ class CustomDropdownButton extends StatelessWidget {
       ),
       padding: EdgeInsets.fromLTRB(0, 13, 2, 13),
       child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            handler();
+          },
           child: Container(
             child: Row(
               children: [

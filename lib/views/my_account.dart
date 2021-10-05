@@ -6,8 +6,8 @@ import 'package:shopoth/controller/my_account_controller.dart';
 import 'package:shopoth/views/change_password.dart';
 import 'package:shopoth/views/my_order.dart';
 import 'package:shopoth/views/wishlist.dart';
+import 'NotificationTabBar.dart';
 import 'account_information.dart';
-import 'notification.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shopoth/custom widgets/custom_checkbox.dart';
@@ -15,14 +15,12 @@ import 'package:shopoth/custom%20widgets/custom_button.dart';
 import 'package:get/get.dart';
 
 class MyAccountPage extends StatelessWidget {
-  bool _expanded = true;
-
   void _goToAccountInfoPage() {
     Get.to(() => AccountInformation());
   }
 
   void _goToNotificationPage() {
-    Get.to(() => NotificationPage());
+    Get.to(() => NotificationTabBar());
   }
 
   void _goToMyOrderPage() {
@@ -39,7 +37,7 @@ class MyAccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accountController = Get.put(MyAccountController());
+    MyAccountController accountController = Get.put(MyAccountController());
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -158,158 +156,166 @@ class MyAccountPage extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.023,
             ),
-            Container(
-              decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.white,
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(5))),
-              margin: EdgeInsets.only(left: 16, right: 16),
-              child: ExpansionPanelList(
-                elevation: _expanded ? 0 : 1,
-                animationDuration: Duration(milliseconds: 1000),
-                // dividerColor: Colors.red,
-                children: [
-                  ExpansionPanel(
-                    body: SingleChildScrollView(
-                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //crossAxisAlignment: CrossAxisAlignment.center,
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.0231,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.white,
+            Obx(
+              () => Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.white,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(5))),
+                margin: EdgeInsets.only(left: 16, right: 16),
+                child: ExpansionPanelList(
+                  //elevation: _expanded ? 0 : 1,
+                  // elevation: myAccountController.expanded ? 0 : 1,
+                  elevation: accountController.expanded.value ? 0 : 1,
+                  animationDuration: Duration(milliseconds: 1000),
+                  // dividerColor: Colors.red,
+                  children: [
+                    ExpansionPanel(
+                      body: SingleChildScrollView(
+                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //crossAxisAlignment: CrossAxisAlignment.center,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.0231,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.white,
+                                  ),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5))),
+                              alignment: Alignment.center,
+                              // height: MediaQuery.of(context).size.height * 0.246,
+                              // width: MediaQuery.of(context).size.width * 0.472,
+                              child: Transform.scale(
+                                scale: 1.1,
+                                child: CircularPercentIndicator(
+                                  center: Text(
+                                    '70%',
+                                    style: TextStyle(
+                                        color: HexColor('#21409A'),
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  radius: 150,
+                                  percent: 0.7,
+                                  lineWidth: 15,
+                                  backgroundColor: HexColor("#DFE7FF"),
+                                  progressColor: HexColor("#21409A"),
+                                  startAngle: 120,
                                 ),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5))),
-                            alignment: Alignment.center,
-                            // height: MediaQuery.of(context).size.height * 0.246,
-                            // width: MediaQuery.of(context).size.width * 0.472,
-                            child: Transform.scale(
-                              scale: 1.1,
-                              child: CircularPercentIndicator(
-                                center: Text(
-                                  '70%',
-                                  style: TextStyle(
-                                      color: HexColor('#21409A'),
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                                radius: 150,
-                                percent: 0.7,
-                                lineWidth: 15,
-                                backgroundColor: HexColor("#DFE7FF"),
-                                progressColor: HexColor("#21409A"),
-                                startAngle: 120,
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.023,
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            width:
-                                (MediaQuery.of(context).size.width * 0.3527) +
-                                    8,
-                            height:
-                                (MediaQuery.of(context).size.height * 0.0318) +
-                                    7.4,
-                            child: TextButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.2777,
-                                    height: MediaQuery.of(context).size.width *
-                                        0.0611,
-                                    child: Text(
-                                      "My Progress",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: HexColor("#21409A"),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.023,
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              width:
+                                  (MediaQuery.of(context).size.width * 0.3527) +
+                                      8,
+                              height: (MediaQuery.of(context).size.height *
+                                      0.0318) +
+                                  7.4,
+                              child: TextButton(
+                                onPressed: () {},
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.2777,
+                                      height:
+                                          MediaQuery.of(context).size.width *
+                                              0.0611,
+                                      child: Text(
+                                        "My Progress",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: HexColor("#21409A"),
+                                        ),
                                       ),
                                     ),
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.055,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.055,
+                                      child: SvgPicture.asset(
+                                          'assets/images/upward.svg'),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.536,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.153,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // SizedBox(
+                                  //   height: MediaQuery.of(context).size.height *
+                                  //       0.0231,
+                                  // ),
+                                  CustomCheckBox(
+                                    sectionName: "Personal Information",
+                                    isCompleted: true,
                                   ),
-                                  Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.055,
-                                    width: MediaQuery.of(context).size.width *
-                                        0.055,
-                                    child: SvgPicture.asset(
-                                        'assets/images/upward.svg'),
+                                  // SizedBox(
+                                  //   height: MediaQuery.of(context).size.height *
+                                  //       0.0231,
+                                  // ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 20.0),
+                                    child: CustomCheckBox(
+                                      sectionName: "Photo Verification",
+                                      isCompleted: false,
+                                    ),
+                                  ),
+                                  // SizedBox(
+                                  //   height: MediaQuery.of(context).size.height *
+                                  //       0.0231,
+                                  // ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 60),
+                                    child: CustomCheckBox(
+                                      sectionName: "My Address",
+                                      isCompleted: true,
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.536,
-                            height: MediaQuery.of(context).size.height * 0.153,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // SizedBox(
-                                //   height: MediaQuery.of(context).size.height *
-                                //       0.0231,
-                                // ),
-                                CustomCheckBox(
-                                  sectionName: "Personal Information",
-                                  isCompleted: true,
-                                ),
-                                // SizedBox(
-                                //   height: MediaQuery.of(context).size.height *
-                                //       0.0231,
-                                // ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 20.0),
-                                  child: CustomCheckBox(
-                                    sectionName: "Photo Verification",
-                                    isCompleted: false,
-                                  ),
-                                ),
-                                // SizedBox(
-                                //   height: MediaQuery.of(context).size.height *
-                                //       0.0231,
-                                // ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 60),
-                                  child: CustomCheckBox(
-                                    sectionName: "My Address",
-                                    isCompleted: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    headerBuilder: (BuildContext context, bool isExpanded) {
-                      return Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Your Profile Completed - 70%",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w600),
+                            )
+                          ],
                         ),
-                      );
-                    },
-                    isExpanded: _expanded,
-                  ),
-                ],
-                expansionCallback: (int item, bool status) {
-                  // setState(() {
-                  //   // itemData[index].expanded =
-                  //   // !itemData[index].expanded;
-                  // });
-                },
+                      ),
+                      headerBuilder: (BuildContext context, bool isExpanded) {
+                        return Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Your Profile Completed - 70%",
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w600),
+                          ),
+                        );
+                      },
+                      // isExpanded: _expanded,
+                      isExpanded: accountController.expanded.value,
+                    ),
+                  ],
+                  expansionCallback: (int item, bool status) {
+                    accountController.profileExpandedStatus();
+                  },
+                ),
               ),
             ),
             SizedBox(

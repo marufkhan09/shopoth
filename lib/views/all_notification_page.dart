@@ -3,60 +3,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shopoth/models/notification_model.dart';
 
-class NotificationPage extends StatelessWidget {
-  bool isSwitchOn = true;
-  bool _hasBeenPressed = true;
+class All extends StatelessWidget {
+  bool _hasBeenPressed = false;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-            height: 48,
-            width: double.infinity,
-            margin: EdgeInsets.only(left: 20.5, right: 20.5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'ALL',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: _hasBeenPressed
-                              ? HexColor('#EF4056')
-                              : Colors.grey,
-                          decoration: TextDecoration.underline,
-                        ),
-                      )),
-                ),
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'ORDER UPDATES',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          decoration: TextDecoration.underline,
-                          color: Colors.grey),
-                    )),
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'PROMOTIONS',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          decoration: TextDecoration.underline,
-                          color: Colors.grey),
-                    )),
-              ],
-            ),
-          ),
           Container(
             margin: EdgeInsets.only(left: 16, right: 16, top: 5.5),
             child: ListView.builder(
