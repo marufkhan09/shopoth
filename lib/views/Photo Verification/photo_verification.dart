@@ -3,18 +3,17 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-import 'package:shopoth/views/photo_verificationPartTwo.dart';
+import 'dart:io';
+
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:shopoth/controller/photo_verification_controller.dart';
+import 'package:shopoth/views/Photo%20Verification/photo_verificationPartTwo.dart';
 
 class PhotoVerification extends StatelessWidget {
-  // Future getImage() async {
-  //   final _image = await ImagePicker().pickImage(source: ImageSource.camera);
+  PhotoVerificationController pvController =
+      Get.put(PhotoVerificationController());
 
-  //   // setstate((){
-  //   //_image = image;
-  //   // });
-  // }
   void goToVerPartTwo() {
     Get.to(() => PhotoVerificationPartTwo());
   }
@@ -35,7 +34,6 @@ class PhotoVerification extends StatelessWidget {
           //  shadowColor: Colors.red,
           shape: Border(bottom: BorderSide(color: Colors.red, width: 3)),
 
-          elevation: 5,
           title: Text(
             'Account Information',
             style: TextStyle(
@@ -142,52 +140,73 @@ class PhotoVerification extends StatelessWidget {
                     style:
                         TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
               ),
-              SizedBox(
-                height: 232,
-              ),
+              // SizedBox(
+              //   height: 232,
+              // ),
               Container(
-                height: 36,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: Column(
                   children: [
-                    Container(
-                      width: 156,
-                      decoration: BoxDecoration(
-                          color: HexColor("#EF4056"),
-                          borderRadius: BorderRadius.circular(100)),
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Center(
-                            child: Text(
-                              "Capture",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700),
-                            ),
+                    Obx(() => pvController.selectedImagePath.value == ''
+                        ? Container(
+                            height: 232,
+                            width: double.infinity,
+                            child: Text('Camera'),
+                          )
+                        : Container(
+                            height: 232,
+                            width: double.infinity,
+                            child: Image.file(
+                                File(pvController.selectedImagePath.value)),
                           )),
-                    ),
                     Container(
-                      width: 156,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(100),
-                          border: Border.all(color: HexColor("#EF4056"))),
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Center(
-                            child: Text(
-                              "Upload",
-                              style: TextStyle(
-                                  color: HexColor("#EF4056"),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                          )),
+                      height: 36,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: 156,
+                            decoration: BoxDecoration(
+                                color: HexColor("#EF4056"),
+                                borderRadius: BorderRadius.circular(100)),
+                            child: TextButton(
+                                onPressed: () {
+                                  pvController.getImage(ImageSource.camera);
+                                },
+                                child: Center(
+                                  child: Text(
+                                    "Capture",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                )),
+                          ),
+                          Container(
+                            width: 156,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(100),
+                                border: Border.all(color: HexColor("#EF4056"))),
+                            child: TextButton(
+                                onPressed: () {},
+                                child: Center(
+                                  child: Text(
+                                    "Upload",
+                                    style: TextStyle(
+                                        color: HexColor("#EF4056"),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                )),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
+
               SizedBox(
                 height: 24,
               ),

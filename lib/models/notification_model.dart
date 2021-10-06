@@ -1,4 +1,4 @@
-class orderedListItem {
+class OrderedListItem {
   String buttonIcon;
   String orderId;
   String reviewDate;
@@ -6,7 +6,7 @@ class orderedListItem {
   String time;
   String iconBackground;
 
-  orderedListItem({
+  OrderedListItem({
     required this.buttonIcon,
     required this.orderId,
     required this.reviewDate,
@@ -16,43 +16,43 @@ class orderedListItem {
   });
 }
 
-final List<orderedListItem> orderedItem = [
-  orderedListItem(
+final List<OrderedListItem> orderedItem = [
+  OrderedListItem(
       buttonIcon: 'assets/images/Shop.svg',
       orderId: "2015MXQ62",
       reviewDate: '21-08-2021',
       orderDate: '20-08-2021',
       time: '12:36',
       iconBackground: '#FFFAE6'),
-  orderedListItem(
+  OrderedListItem(
       buttonIcon: 'assets/images/greenRight.svg',
       orderId: "2015MXQ62",
       reviewDate: '21-08-2021',
       orderDate: '20-08-2021',
       time: '12:36',
       iconBackground: '#DBFFDC'),
-  orderedListItem(
+  OrderedListItem(
       buttonIcon: 'assets/images/Icon-close.svg',
       orderId: "2015MXQ62",
       reviewDate: '21-08-2021',
       orderDate: '20-08-2021',
       time: '12:36',
       iconBackground: '#FFE6E6'),
-  orderedListItem(
+  OrderedListItem(
       buttonIcon: 'assets/images/Shop.svg',
       orderId: "2015MXQ62",
       reviewDate: '21-08-2021',
       orderDate: '20-08-2021',
       time: '12:36',
       iconBackground: '#FFFAE6'),
-  orderedListItem(
+  OrderedListItem(
       buttonIcon: 'assets/images/greenRight.svg',
       orderId: "2015MXQ62",
       reviewDate: '21-08-2021',
       orderDate: '20-08-2021',
       time: '12:36',
       iconBackground: '#DBFFDC'),
-  orderedListItem(
+  OrderedListItem(
       buttonIcon: 'assets/images/Icon-close.svg',
       orderId: "2015MXQ62",
       reviewDate: '21-08-2021',

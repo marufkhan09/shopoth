@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,10 @@ class PhotoVerificationController extends GetxController {
     if (pickFile != null) {
       selectedImagePath.value = pickFile.path;
     } else {
-      print("image not selected/captured");
+      Get.snackbar('Error', 'No Image Captured',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.amber,
+          colorText: Colors.white);
     }
   }
 }

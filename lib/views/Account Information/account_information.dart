@@ -10,7 +10,7 @@ import 'package:shopoth/custom%20widgets/custom_label.dart';
 import 'package:shopoth/custom%20widgets/custom_textfield.dart';
 import 'package:shopoth/models/outlet_model.dart';
 import 'package:shopoth/models/popupmenuitem.dart';
-import 'package:shopoth/views/photo_verification.dart';
+import 'package:shopoth/views/Photo%20Verification/photo_verification.dart';
 import 'package:get/get.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -25,16 +25,8 @@ class AccountInformation extends StatelessWidget {
   bool isMyOutletClicked = true;
   bool isVerified = false;
 
-  void _goToCart() {
-    print("Go to Cart");
-  }
-
   void _goToVerificationPage() {
     Get.to(() => PhotoVerification());
-  }
-
-  void _editTextField() {
-    print("Make textfield visible");
   }
 
   @override
@@ -528,7 +520,7 @@ class AccountInformation extends StatelessWidget {
                                 replacement: Column(
                                   children: [
                                     CustomLabel(
-                                      LabelName: 'Address Name',
+                                      labelName: 'Address Name',
                                       labelColor: '#616161',
                                     ),
                                     CustomTextField(
@@ -539,7 +531,7 @@ class AccountInformation extends StatelessWidget {
                                       height: 10,
                                     ),
                                     CustomLabel(
-                                      LabelName: 'Email Address',
+                                      labelName: 'Email Address',
                                       labelColor: '#616161',
                                     ),
                                     CustomTextField(
@@ -553,7 +545,7 @@ class AccountInformation extends StatelessWidget {
                                       height: 10,
                                     ),
                                     CustomLabel(
-                                      LabelName: 'Phone Number',
+                                      labelName: 'Phone Number',
                                       labelColor: '#616161',
                                     ),
                                     CustomTextField(
@@ -564,7 +556,7 @@ class AccountInformation extends StatelessWidget {
                                       height: 10,
                                     ),
                                     CustomLabel(
-                                      LabelName: 'Date of Birth',
+                                      labelName: 'Date of Birth',
                                       labelColor: '#616161',
                                     ),
                                     CustomTextField(

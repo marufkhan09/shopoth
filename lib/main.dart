@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopoth/views/my_account.dart';
+import 'package:shopoth/views/My%20Account%20/my_account.dart';
 import 'package:get/get.dart';
 //import 'package:google_fonts/google_fonts.dart';
 

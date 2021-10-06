@@ -137,7 +137,7 @@ class PhotoVerificationPartTwo extends StatelessWidget {
                   height: 16,
                 ),
                 CustomLabel(
-                  LabelName: 'Full Name (In Bangla)',
+                  labelName: 'Full Name (In Bangla)',
                   labelColor: '#192434',
                 ),
                 CustomTextField(label: '', isEnabled: true),
@@ -145,7 +145,7 @@ class PhotoVerificationPartTwo extends StatelessWidget {
                   height: 10,
                 ),
                 CustomLabel(
-                  LabelName: 'Full Name (In English)',
+                  labelName: 'Full Name (In English)',
                   labelColor: '#192434',
                 ),
                 CustomTextField(label: '', isEnabled: true),
@@ -153,7 +153,7 @@ class PhotoVerificationPartTwo extends StatelessWidget {
                   height: 10,
                 ),
                 CustomLabel(
-                  LabelName: 'Father’s Name',
+                  labelName: 'Father’s Name',
                   labelColor: '#192434',
                 ),
                 CustomTextField(label: '', isEnabled: true),
@@ -161,7 +161,7 @@ class PhotoVerificationPartTwo extends StatelessWidget {
                   height: 10,
                 ),
                 CustomLabel(
-                  LabelName: 'Mother’s Name',
+                  labelName: 'Mother’s Name',
                   labelColor: '#192434',
                 ),
                 CustomTextField(label: '', isEnabled: true),
@@ -169,7 +169,7 @@ class PhotoVerificationPartTwo extends StatelessWidget {
                   height: 10,
                 ),
                 CustomLabel(
-                  LabelName: 'Date of Birth',
+                  labelName: 'Date of Birth',
                   labelColor: '#192434',
                 ),
                 CustomTextField(label: '', isEnabled: true),
@@ -177,7 +177,7 @@ class PhotoVerificationPartTwo extends StatelessWidget {
                   height: 10,
                 ),
                 CustomLabel(
-                  LabelName: 'Address',
+                  labelName: 'Address',
                   labelColor: '#192434',
                 ),
                 CustomTextField(label: '', isEnabled: true),
@@ -185,7 +185,7 @@ class PhotoVerificationPartTwo extends StatelessWidget {
                   height: 10,
                 ),
                 CustomLabel(
-                  LabelName: 'Present Address',
+                  labelName: 'Present Address',
                   labelColor: '#192434',
                 ),
                 CustomTextField(label: '', isEnabled: true),

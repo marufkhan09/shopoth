@@ -4,7 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:shopoth/models/notification_model.dart';
 
 class All extends StatelessWidget {
-  bool _hasBeenPressed = false;
+  // bool _hasBeenPressed = false;
 
   @override
   Widget build(BuildContext context) {

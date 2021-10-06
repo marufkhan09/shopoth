@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:shopoth/views/promotions.dart';
+import 'package:shopoth/views/NotificationTab/promotions.dart';
 import 'all_notification_page.dart';
 import 'order_updates.dart';
 

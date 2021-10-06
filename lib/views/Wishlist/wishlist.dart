@@ -23,7 +23,6 @@ class Wishlist extends StatelessWidget {
           //shadowColor: Colors.red,
           shape: Border(bottom: BorderSide(color: Colors.red, width: 3)),
 
-          elevation: 5,
           title: Text(
             'Wishlist',
             textAlign: TextAlign.start,
